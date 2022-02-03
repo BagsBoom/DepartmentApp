@@ -12,13 +12,13 @@ namespace DepartmentApp
     {
         public static string connectionSql()
         {
-            string MyConnectionString = "Server=localhost;Database=department;Uid=root;Pwd=;";
+            string MyConnectionString = "Server=localhost;Database=department;Uid=root;Pwd=2003;";
             return MyConnectionString;
         }
 
         public static string connectionSqlLogin()
         {
-            string MyConnectionString = "Server=localhost;Database=login;Uid=root;Pwd=;";
+            string MyConnectionString = "Server=localhost;Database=login;Uid=root;Pwd=2003;";
             return MyConnectionString;
         }
     }
