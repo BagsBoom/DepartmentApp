@@ -17,25 +17,20 @@ namespace DepartmentApp
         private MySqlCommandBuilder mySqlCommandBuilder = null;
         private MySqlDataAdapter mySqlDataAdapter = null;
         private DataSet dataSet = null;
-        private bool newRowAdd = false;
         public departmentsForm()
         {
             InitializeComponent();
         }
-        
+
         private void LoadData()
         {
             try
             {
-                string query = "SELECT *, 'Delete' AS 'Delete' FROM departments";
+                string query = "SELECT * FROM departments";
                 MySqlConnection con = new MySqlConnection(DataBase.connectionSql());
 
                 mySqlDataAdapter = new MySqlDataAdapter(query, con);
                 mySqlCommandBuilder = new MySqlCommandBuilder(mySqlDataAdapter);
-
-                mySqlCommandBuilder.GetInsertCommand();
-                mySqlCommandBuilder.GetUpdateCommand();
-                mySqlCommandBuilder.GetDeleteCommand();
 
                 dataSet = new DataSet();
 
@@ -43,19 +38,13 @@ namespace DepartmentApp
 
                 dataGridViewDepartments.DataSource = dataSet.Tables["departments"];
 
-                for (int i = 0; i < dataGridViewDepartments.Rows.Count; i++)
-                {
-                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-
-                    dataGridViewDepartments[2, i] = linkCell;
-                }
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void ReloadData()
@@ -67,13 +56,6 @@ namespace DepartmentApp
                 mySqlDataAdapter.Fill(dataSet, "departments");
 
                 dataGridViewDepartments.DataSource = dataSet.Tables["departments"];
-
-                for (int i = 0; i < dataGridViewDepartments.Rows.Count; i++)
-                {
-                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-
-                    dataGridViewDepartments[2, i] = linkCell;
-                }
             }
             catch (Exception ex)
             {
@@ -83,133 +65,125 @@ namespace DepartmentApp
 
         }
 
-
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var Main = new Main_Form();
-            Main.Closed += (s, args) => this.Close();
-            Main.Show();
-        }
 
         private void departmentsForm_Load(object sender, EventArgs e)
         {
             LoadData();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void AddButton_Click(object sender, EventArgs e)
         {
-            ReloadData();
-        }
-
-        private void dataGridViewDepartments_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
+            DataRow row = dataSet.Tables["departments"].NewRow();
+            if (textBox1.Text == "")
             {
-                if (e.ColumnIndex == 2)
-                {
-                    string task = dataGridViewDepartments.Rows[e.RowIndex].Cells[2].Value.ToString();
-
-
-                    if(task == "Delete")
-                    {
-                        if(MessageBox.Show("Delete this record?", "Deleting", MessageBoxButtons.YesNo,MessageBoxIcon.Question)
-                            == DialogResult.Yes)
-                        {
-                            int rowIndex = e.RowIndex;
-
-                            dataGridViewDepartments.Rows.RemoveAt(rowIndex);
-                            dataSet.Tables["departments"].Rows[rowIndex].Delete();
-
-                            mySqlDataAdapter.Update(dataSet, "departments");
-                        }
-                    }
-                    else if(task == "Insert")
-                    {
-                        int rowIndex = dataGridViewDepartments.Rows.Count - 2;
-
-                        DataRow row = dataSet.Tables["departments"].NewRow();
-
-                        row["dept_no"] = dataGridViewDepartments.Rows[rowIndex].Cells["dept_no"].Value;
-                        row["dept_name"] = dataGridViewDepartments.Rows[rowIndex].Cells["dept_name"].Value;
-
-                        dataSet.Tables["departments"].Rows.Add(row);
-                        dataSet.Tables["departments"].Rows.RemoveAt(dataSet.Tables["departments"].Rows.Count - 1);
-
-                        dataGridViewDepartments.Rows.RemoveAt(dataGridViewDepartments.Rows.Count - 2);
-                        dataGridViewDepartments.Rows[e.RowIndex].Cells[2].Value = "Delete";
-
-                        mySqlDataAdapter.Update(dataSet, "departments");
-
-                        newRowAdd = false;
-                    }
-                    else if(task == "Update")
-                    {
-                        int x = e.RowIndex;
-
-                        dataSet.Tables["departments"].Rows[x]["dept_no"] = dataGridViewDepartments.Rows[x].Cells["dept_no"].Value;
-                        dataSet.Tables["departments"].Rows[x]["dept_name"] = dataGridViewDepartments.Rows[x].Cells["dept_name"].Value;
-
-                        mySqlDataAdapter.Update(dataSet, "departments");
-                        dataGridViewDepartments.Rows[e.RowIndex].Cells[2].Value = "Delete";
-                    }
-
-                    ReloadData();
-                }
+                MessageBox.Show("Error! Fill all the text boxes please!");
             }
-            catch (Exception ex)
+            else
             {
+                row["dept_name"] = textBox1.Text;
 
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dataSet.Tables["departments"].Rows.Add(row);
+
+                mySqlDataAdapter.Update(dataSet, "departments");
+                ReloadData();
+                int nRowIndex = dataGridViewDepartments.Rows.Count - 1;
+                int nColumnIndex = 1;
+
+                dataGridViewDepartments.Rows[nRowIndex].Selected = true;
+                dataGridViewDepartments.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
+
+                dataGridViewDepartments.FirstDisplayedScrollingRowIndex = nRowIndex;
             }
         }
 
-        private void dataGridViewDepartments_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            try
+            if (MessageBox.Show("Delete this record?", "Deleting", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                           == DialogResult.Yes)
             {
-                if(newRowAdd == false)
-                {
-                    newRowAdd = true;
+                int rowIndex = dataGridViewDepartments.CurrentCell.RowIndex;
 
-                    int lastRow = dataGridViewDepartments.Rows.Count - 2;
+                dataGridViewDepartments.Rows.RemoveAt(rowIndex);
+                dataSet.Tables["departments"].Rows[rowIndex].Delete();
 
-                    DataGridViewRow row = dataGridViewDepartments.Rows[lastRow];
-                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-
-                    dataGridViewDepartments[2, lastRow] = linkCell;
-
-                    row.Cells["Delete"].Value = "Insert";
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mySqlDataAdapter.Update(dataSet, "departments");
             }
         }
 
-        private void dataGridViewDepartments_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            try
+            int x = dataGridViewDepartments.CurrentCell.RowIndex;
+            if (textBox1.Text == "")
             {
-                if(newRowAdd == false)
-                {
-                    int rowIndex = dataGridViewDepartments.SelectedCells[0].RowIndex;
-                    DataGridViewRow editingRow = dataGridViewDepartments.Rows[rowIndex];
-
-                    DataGridViewLinkCell linkCell = new DataGridViewLinkCell();
-
-                    dataGridViewDepartments[2, rowIndex] = linkCell;
-
-                    editingRow.Cells["Delete"].Value = "Update";
-                }
+                MessageBox.Show("Error! Fill all the text boxes please!");
             }
-            catch (Exception ex)
+            else 
             {
+                dataGridViewDepartments.Rows[x].Cells["dept_name"].Value = textBox1.Text;
 
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                mySqlDataAdapter.Update(dataSet, "departments");
             }
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+        }
+
+        private void dataGridViewDepartments_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int x = e.RowIndex;
+            if(e.RowIndex != -1)
+                textBox1.Text = dataGridViewDepartments.Rows[x].Cells["dept_name"].Value.ToString();
+        }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridViewDepartments.DataSource as DataTable).DefaultView.RowFilter = $"dept_name LIKE '%{searchBox.Text}%'";
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+        private void EmployeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var departments = new employeesForm();
+            departments.Closed += (s, args) => this.Close();
+            departments.Show();
+        }
+
+        private void departmentEmployeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var departments = new DeptEmpForm();
+            departments.Closed += (s, args) => this.Close();
+            departments.Show();
+        }
+
+        private void departmentManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var departments = new DeptManagerForm();
+            departments.Closed += (s, args) => this.Close();
+            departments.Show();
+        }
+
+        private void salariesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var departments = new salariesForm();
+            departments.Closed += (s, args) => this.Close();
+            departments.Show();
+        }
+
+        private void titlesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var departments = new titlesForm();
+            departments.Closed += (s, args) => this.Close();
+            departments.Show();
         }
     }
 }

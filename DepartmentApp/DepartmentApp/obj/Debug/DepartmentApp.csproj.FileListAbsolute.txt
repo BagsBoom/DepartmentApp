@@ -68,10 +68,16 @@ C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\Departm
 C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.exe.config
 C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.departmentsForm.resources
 C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.Login_Form.resources
-C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.Main_Form.resources
 C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.Properties.Resources.resources
 C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.csproj.GenerateResource.cache
 C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.csproj.CoreCompileInputs.cache
 C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.csproj.CopyComplete
 C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.exe
 C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.pdb
+C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.employeesForm.resources
+C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.salariesForm.resources
+C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.titlesForm.resources
+C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.DeptEmpForm.resources
+C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.DeptManagerForm.resources
+C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.SignUpForm.resources
+C:\DepartmentApp\Git\DepartmentApp\DepartmentApp\DepartmentApp\obj\Debug\DepartmentApp.csproj.ResolveComReference.cache

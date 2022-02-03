@@ -15,5 +15,11 @@ namespace DepartmentApp
             string MyConnectionString = "Server=localhost;Database=department;Uid=root;Pwd=;";
             return MyConnectionString;
         }
+
+        public static string connectionSqlLogin()
+        {
+            string MyConnectionString = "Server=localhost;Database=login;Uid=root;Pwd=;";
+            return MyConnectionString;
+        }
     }
 }
