@@ -36,6 +36,12 @@ namespace DepartmentApp
 
                 dataGridViewTitles.DataSource = dataSet.Tables["titles"];
 
+                dataGridViewTitles.Columns[0].HeaderText = "Employee ID";
+                dataGridViewTitles.Columns[1].HeaderText = "Title";
+                dataGridViewTitles.Columns[2].HeaderText = "Other details";
+                dataGridViewTitles.Columns[3].HeaderText = "From date";
+                dataGridViewTitles.Columns[4].HeaderText = "To date";
+
             }
             catch (Exception ex)
             {
@@ -118,10 +124,6 @@ namespace DepartmentApp
                 mySqlDataAdapter.Update(dataSet, "titles");
                 ReloadData();
                 int nRowIndex = dataGridViewTitles.Rows.Count - 1;
-                int nColumnIndex = 1;
-
-                dataGridViewTitles.Rows[nRowIndex].Selected = true;
-                dataGridViewTitles.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
 
                 dataGridViewTitles.FirstDisplayedScrollingRowIndex = nRowIndex;
             }
@@ -186,7 +188,7 @@ namespace DepartmentApp
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            (dataGridViewTitles.DataSource as DataTable).DefaultView.RowFilter = $"title LIKE '%{searchBox.Text}%'";
+            (dataGridViewTitles.DataSource as DataTable).DefaultView.RowFilter = $"title LIKE '%{searchBox.Text}%' OR CONVERT(emp_no, System.String) LIKE '%{searchBox.Text}%'";
         }
 
         private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)

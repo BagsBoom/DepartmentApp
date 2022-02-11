@@ -126,6 +126,7 @@ namespace DepartmentApp
             this.dataGridViewEmployees.Location = new System.Drawing.Point(432, 79);
             this.dataGridViewEmployees.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
+            this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.Size = new System.Drawing.Size(785, 451);
             this.dataGridViewEmployees.TabIndex = 3;
             this.dataGridViewEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployees_CellClick);
@@ -235,12 +236,12 @@ namespace DepartmentApp
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(159, 207);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2025, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(116, 22);
             this.dateTimePicker1.TabIndex = 15;
-            this.dateTimePicker1.Value = new System.DateTime(2022, 1, 13, 0, 0, 0, 0);
+            this.dateTimePicker1.Value = new System.DateTime(2002, 2, 11, 0, 0, 0, 0);
             // 
             // dateTimePicker2
             // 

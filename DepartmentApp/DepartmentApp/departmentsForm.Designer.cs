@@ -58,6 +58,7 @@ namespace DepartmentApp
             this.dataGridViewDepartments.Location = new System.Drawing.Point(475, 81);
             this.dataGridViewDepartments.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewDepartments.Name = "dataGridViewDepartments";
+            this.dataGridViewDepartments.ReadOnly = true;
             this.dataGridViewDepartments.Size = new System.Drawing.Size(669, 354);
             this.dataGridViewDepartments.TabIndex = 0;
             this.dataGridViewDepartments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDepartments_CellClick);

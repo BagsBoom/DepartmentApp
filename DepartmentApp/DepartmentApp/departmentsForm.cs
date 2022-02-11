@@ -38,6 +38,9 @@ namespace DepartmentApp
 
                 dataGridViewDepartments.DataSource = dataSet.Tables["departments"];
 
+                dataGridViewDepartments.Columns[0].HeaderText = "Department Id";
+                dataGridViewDepartments.Columns[1].HeaderText = "Department Name";
+
             }
             catch (Exception ex)
             {
@@ -87,10 +90,6 @@ namespace DepartmentApp
                 mySqlDataAdapter.Update(dataSet, "departments");
                 ReloadData();
                 int nRowIndex = dataGridViewDepartments.Rows.Count - 1;
-                int nColumnIndex = 1;
-
-                dataGridViewDepartments.Rows[nRowIndex].Selected = true;
-                dataGridViewDepartments.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
 
                 dataGridViewDepartments.FirstDisplayedScrollingRowIndex = nRowIndex;
             }
@@ -139,7 +138,7 @@ namespace DepartmentApp
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            (dataGridViewDepartments.DataSource as DataTable).DefaultView.RowFilter = $"dept_name LIKE '%{searchBox.Text}%'";
+            (dataGridViewDepartments.DataSource as DataTable).DefaultView.RowFilter = $"dept_name LIKE '%{searchBox.Text}%' OR CONVERT(dept_no, System.String) LIKE '%{searchBox.Text}%'";
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)

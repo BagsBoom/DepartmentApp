@@ -180,6 +180,7 @@ namespace DepartmentApp
             this.dataGridViewDeptManager.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDeptManager.Location = new System.Drawing.Point(474, 64);
             this.dataGridViewDeptManager.Name = "dataGridViewDeptManager";
+            this.dataGridViewDeptManager.ReadOnly = true;
             this.dataGridViewDeptManager.Size = new System.Drawing.Size(560, 404);
             this.dataGridViewDeptManager.TabIndex = 69;
             this.dataGridViewDeptManager.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDeptManager_CellClick);

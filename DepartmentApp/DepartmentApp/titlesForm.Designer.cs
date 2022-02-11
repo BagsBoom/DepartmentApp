@@ -65,6 +65,7 @@ namespace DepartmentApp
             this.dataGridViewTitles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTitles.Location = new System.Drawing.Point(494, 97);
             this.dataGridViewTitles.Name = "dataGridViewTitles";
+            this.dataGridViewTitles.ReadOnly = true;
             this.dataGridViewTitles.Size = new System.Drawing.Size(697, 449);
             this.dataGridViewTitles.TabIndex = 0;
             this.dataGridViewTitles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTitles_CellClick);

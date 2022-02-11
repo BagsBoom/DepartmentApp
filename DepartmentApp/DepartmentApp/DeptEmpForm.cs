@@ -38,6 +38,11 @@ namespace DepartmentApp
 
                 dataGridViewDeptEmp.DataSource = dataSet.Tables["dept_emp"];
 
+                dataGridViewDeptEmp.Columns[0].HeaderText = "Employee ID";
+                dataGridViewDeptEmp.Columns[1].HeaderText = "Department ID";
+                dataGridViewDeptEmp.Columns[2].HeaderText = "From date";
+                dataGridViewDeptEmp.Columns[3].HeaderText = "To date";
+
             }
             catch (Exception ex)
             {
@@ -138,20 +143,26 @@ namespace DepartmentApp
             }
             else
             {
-                row["emp_no"] = comboBox1.Text;
-                row["dept_no"] = comboBox2.Text;
-                row["from_date"] = dateTimePicker1.Text;
-                row["to_date"] = dateTimePicker2.Text;
+                try
+                {
+                    row["emp_no"] = comboBox1.Text;
+                    row["dept_no"] = comboBox2.Text;
+                    row["from_date"] = dateTimePicker1.Text;
+                    row["to_date"] = dateTimePicker2.Text;
+                    dataSet.Tables["dept_emp"].Rows.Add(row);
 
-                dataSet.Tables["dept_emp"].Rows.Add(row);
-
-                mySqlDataAdapter.Update(dataSet, "dept_emp");
-                ReloadData();
+                    mySqlDataAdapter.Update(dataSet, "dept_emp");
+                }
+                catch (MySqlException ex)
+                {
+                    if (ex.Number > 0)
+                    {
+                        ReloadData();
+                        MessageBox.Show("Please, check the ID which you want to add!");
+                        return;
+                    }
+                }
                 int nRowIndex = dataGridViewDeptEmp.Rows.Count - 1;
-                int nColumnIndex = 1;
-
-                dataGridViewDeptEmp.Rows[nRowIndex].Selected = true;
-                dataGridViewDeptEmp.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
 
                 dataGridViewDeptEmp.FirstDisplayedScrollingRowIndex = nRowIndex;
             }

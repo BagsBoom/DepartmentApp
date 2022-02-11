@@ -31,6 +31,12 @@ namespace DepartmentApp
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeptEmpForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.EmployeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.departmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.departmentManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salariesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.titlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewDeptEmp = new System.Windows.Forms.DataGridView();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -44,12 +50,6 @@ namespace DepartmentApp
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.EmployeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.departmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.departmentManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salariesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.titlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDeptEmp)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +65,55 @@ namespace DepartmentApp
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EmployeesToolStripMenuItem,
+            this.departmentsToolStripMenuItem,
+            this.departmentManagerToolStripMenuItem,
+            this.salariesToolStripMenuItem,
+            this.titlesToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(97, 22);
+            this.toolStripDropDownButton1.Text = "Select Table";
+            // 
+            // EmployeesToolStripMenuItem
+            // 
+            this.EmployeesToolStripMenuItem.Name = "EmployeesToolStripMenuItem";
+            this.EmployeesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.EmployeesToolStripMenuItem.Text = "Employees";
+            this.EmployeesToolStripMenuItem.Click += new System.EventHandler(this.EmployeesToolStripMenuItem_Click);
+            // 
+            // departmentsToolStripMenuItem
+            // 
+            this.departmentsToolStripMenuItem.Name = "departmentsToolStripMenuItem";
+            this.departmentsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.departmentsToolStripMenuItem.Text = "Departments";
+            this.departmentsToolStripMenuItem.Click += new System.EventHandler(this.departmentsToolStripMenuItem_Click);
+            // 
+            // departmentManagerToolStripMenuItem
+            // 
+            this.departmentManagerToolStripMenuItem.Name = "departmentManagerToolStripMenuItem";
+            this.departmentManagerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.departmentManagerToolStripMenuItem.Text = "Department Manager";
+            this.departmentManagerToolStripMenuItem.Click += new System.EventHandler(this.departmentManagerToolStripMenuItem_Click);
+            // 
+            // salariesToolStripMenuItem
+            // 
+            this.salariesToolStripMenuItem.Name = "salariesToolStripMenuItem";
+            this.salariesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.salariesToolStripMenuItem.Text = "Salaries";
+            this.salariesToolStripMenuItem.Click += new System.EventHandler(this.salariesToolStripMenuItem_Click);
+            // 
+            // titlesToolStripMenuItem
+            // 
+            this.titlesToolStripMenuItem.Name = "titlesToolStripMenuItem";
+            this.titlesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.titlesToolStripMenuItem.Text = "Titles";
+            this.titlesToolStripMenuItem.Click += new System.EventHandler(this.titlesToolStripMenuItem_Click);
+            // 
             // dataGridViewDeptEmp
             // 
             this.dataGridViewDeptEmp.AllowUserToAddRows = false;
@@ -72,6 +121,7 @@ namespace DepartmentApp
             this.dataGridViewDeptEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDeptEmp.Location = new System.Drawing.Point(484, 50);
             this.dataGridViewDeptEmp.Name = "dataGridViewDeptEmp";
+            this.dataGridViewDeptEmp.ReadOnly = true;
             this.dataGridViewDeptEmp.Size = new System.Drawing.Size(558, 413);
             this.dataGridViewDeptEmp.TabIndex = 5;
             this.dataGridViewDeptEmp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDeptEmp_CellClick);
@@ -194,55 +244,6 @@ namespace DepartmentApp
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EmployeesToolStripMenuItem,
-            this.departmentsToolStripMenuItem,
-            this.departmentManagerToolStripMenuItem,
-            this.salariesToolStripMenuItem,
-            this.titlesToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(97, 22);
-            this.toolStripDropDownButton1.Text = "Select Table";
-            // 
-            // EmployeesToolStripMenuItem
-            // 
-            this.EmployeesToolStripMenuItem.Name = "EmployeesToolStripMenuItem";
-            this.EmployeesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.EmployeesToolStripMenuItem.Text = "Employees";
-            this.EmployeesToolStripMenuItem.Click += new System.EventHandler(this.EmployeesToolStripMenuItem_Click);
-            // 
-            // departmentsToolStripMenuItem
-            // 
-            this.departmentsToolStripMenuItem.Name = "departmentsToolStripMenuItem";
-            this.departmentsToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.departmentsToolStripMenuItem.Text = "Departments";
-            this.departmentsToolStripMenuItem.Click += new System.EventHandler(this.departmentsToolStripMenuItem_Click);
-            // 
-            // departmentManagerToolStripMenuItem
-            // 
-            this.departmentManagerToolStripMenuItem.Name = "departmentManagerToolStripMenuItem";
-            this.departmentManagerToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.departmentManagerToolStripMenuItem.Text = "Department Manager";
-            this.departmentManagerToolStripMenuItem.Click += new System.EventHandler(this.departmentManagerToolStripMenuItem_Click);
-            // 
-            // salariesToolStripMenuItem
-            // 
-            this.salariesToolStripMenuItem.Name = "salariesToolStripMenuItem";
-            this.salariesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.salariesToolStripMenuItem.Text = "Salaries";
-            this.salariesToolStripMenuItem.Click += new System.EventHandler(this.salariesToolStripMenuItem_Click);
-            // 
-            // titlesToolStripMenuItem
-            // 
-            this.titlesToolStripMenuItem.Name = "titlesToolStripMenuItem";
-            this.titlesToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.titlesToolStripMenuItem.Text = "Titles";
-            this.titlesToolStripMenuItem.Click += new System.EventHandler(this.titlesToolStripMenuItem_Click);
             // 
             // DeptEmpForm
             // 

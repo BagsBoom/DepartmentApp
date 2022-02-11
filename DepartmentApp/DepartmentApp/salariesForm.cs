@@ -40,6 +40,11 @@ namespace DepartmentApp
 
                 dataGridViewSalaries.DataSource = dataSet.Tables["salaries"];
 
+                dataGridViewSalaries.Columns[0].HeaderText = "Employee ID";
+                dataGridViewSalaries.Columns[1].HeaderText = "Salary";
+                dataGridViewSalaries.Columns[2].HeaderText = "From date";
+                dataGridViewSalaries.Columns[3].HeaderText = "To date";
+
             }
             catch (Exception ex)
             {
@@ -107,29 +112,37 @@ namespace DepartmentApp
 
             DataRow row = dataSet.Tables["salaries"].NewRow();
 
-            if (comboBox1.Text == "")
+            if (comboBox1.Text == "" || numericUpDown1.Value < 1)
             {
-                MessageBox.Show("Error! Fill all the text boxes please!");
+                MessageBox.Show("Error! Fill all the text boxes please with correct data!");
             }
             else
             {
-                row["emp_no"] = comboBox1.Text;
-                row["salary"] = numericUpDown1.Text;
-                row["from_date"] = dateTimePicker1.Text;
-                row["to_date"] = dateTimePicker2.Text;
+                try
+                {
+                    row["emp_no"] = comboBox1.Text;
+                    row["salary"] = numericUpDown1.Text;
+                    row["from_date"] = dateTimePicker1.Text;
+                    row["to_date"] = dateTimePicker2.Text;
+                    dataSet.Tables["salaries"].Rows.Add(row);
 
-                dataSet.Tables["salaries"].Rows.Add(row);
+                    mySqlDataAdapter.Update(dataSet, "salaries");
+                }
+                catch (MySqlException ex)
+                {
+                    if (ex.Number > 0)
+                    {
+                        ReloadData();
+                        MessageBox.Show("Please, check the ID which you want to add!");
+                        return;
+                    }
+                }
 
-                mySqlDataAdapter.Update(dataSet, "salaries");
-                ReloadData();
-                int nRowIndex = dataGridViewSalaries.Rows.Count - 1;
-                int nColumnIndex = 1;
+                    int nRowIndex = dataGridViewSalaries.Rows.Count - 1;
 
-                dataGridViewSalaries.Rows[nRowIndex].Selected = true;
-                dataGridViewSalaries.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
+                    dataGridViewSalaries.FirstDisplayedScrollingRowIndex = nRowIndex;
+                }
 
-                dataGridViewSalaries.FirstDisplayedScrollingRowIndex = nRowIndex;
-            }
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -157,18 +170,30 @@ namespace DepartmentApp
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             int x = dataGridViewSalaries.CurrentCell.RowIndex;
-            if (comboBox1.Text == "")
+            if (comboBox1.Text == "" || numericUpDown1.Value < 1)
             {
                 MessageBox.Show("Error! Fill all the text boxes please!");
             }
             else
             {
-                dataGridViewSalaries.Rows[x].Cells["emp_no"].Value = comboBox1.Text;
-                dataGridViewSalaries.Rows[x].Cells["salary"].Value = numericUpDown1.Text;
-                dataGridViewSalaries.Rows[x].Cells["from_date"].Value = dateTimePicker1.Text;
-                dataGridViewSalaries.Rows[x].Cells["to_date"].Value = dateTimePicker2.Text;
+                try
+                {
+                    dataGridViewSalaries.Rows[x].Cells["emp_no"].Value = comboBox1.Text;
+                    dataGridViewSalaries.Rows[x].Cells["salary"].Value = numericUpDown1.Text;
+                    dataGridViewSalaries.Rows[x].Cells["from_date"].Value = dateTimePicker1.Text;
+                    dataGridViewSalaries.Rows[x].Cells["to_date"].Value = dateTimePicker2.Text;
 
-                mySqlDataAdapter.Update(dataSet, "salaries");
+                    mySqlDataAdapter.Update(dataSet, "salaries");
+                }
+                catch (MySqlException ex)
+                {
+                    if (ex.Number > 0)
+                    {
+                        ReloadData();
+                        MessageBox.Show("Please, check the ID which you want to add!");
+                        return;
+                    }
+                }
             }
         }
 
@@ -255,5 +280,6 @@ namespace DepartmentApp
             departments.Closed += (s, args) => this.Close();
             departments.Show();
         }
+
     }
 }

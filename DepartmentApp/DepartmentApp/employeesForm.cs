@@ -38,6 +38,12 @@ namespace DepartmentApp
                 mySqlDataAdapter.Fill(dataSet, "employees");
 
                 dataGridViewEmployees.DataSource = dataSet.Tables["employees"];
+                dataGridViewEmployees.Columns[0].HeaderText = "Employee Id";
+                dataGridViewEmployees.Columns[1].HeaderText = "First Name";
+                dataGridViewEmployees.Columns[2].HeaderText = "Last Name";
+                dataGridViewEmployees.Columns[3].HeaderText = "Birth Day";
+                dataGridViewEmployees.Columns[4].HeaderText = "Gender";
+                dataGridViewEmployees.Columns[5].HeaderText = "Hire Date";
 
             }
             catch (Exception ex)
@@ -94,10 +100,6 @@ namespace DepartmentApp
                 mySqlDataAdapter.Update(dataSet, "employees");
                 ReloadData();
                 int nRowIndex = dataGridViewEmployees.Rows.Count - 1;
-                int nColumnIndex = 1;
-
-                dataGridViewEmployees.Rows[nRowIndex].Selected = true;
-                dataGridViewEmployees.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
 
                 dataGridViewEmployees.FirstDisplayedScrollingRowIndex = nRowIndex;
             }
@@ -163,7 +165,7 @@ namespace DepartmentApp
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             (dataGridViewEmployees.DataSource as DataTable).DefaultView.RowFilter =
-                $"last_name LIKE '%{searchBox.Text}%' OR first_name LIKE '%{searchBox.Text}%' OR gender LIKE '%{searchBox.Text}%'";
+                $"last_name LIKE '%{searchBox.Text}%' OR first_name LIKE '%{searchBox.Text}%' OR gender LIKE '%{searchBox.Text}%' OR CONVERT(emp_no, System.String) LIKE '%{searchBox.Text}%'";  
         }
 
         private void departmentsToolStripMenuItem_Click(object sender, EventArgs e)
