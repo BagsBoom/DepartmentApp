@@ -125,7 +125,7 @@ namespace DepartmentApp
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(307, 379);
+            this.button3.Location = new System.Drawing.Point(290, 327);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(97, 56);
             this.button3.TabIndex = 9;
@@ -135,7 +135,7 @@ namespace DepartmentApp
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(183, 379);
+            this.button2.Location = new System.Drawing.Point(166, 327);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 56);
             this.button2.TabIndex = 8;
@@ -145,7 +145,7 @@ namespace DepartmentApp
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(62, 379);
+            this.AddButton.Location = new System.Drawing.Point(45, 327);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(97, 56);
             this.AddButton.TabIndex = 7;
@@ -202,7 +202,7 @@ namespace DepartmentApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(1196, 510);
             this.Controls.Add(this.searchBox);

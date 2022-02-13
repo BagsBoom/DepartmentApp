@@ -50,6 +50,8 @@ namespace DepartmentApp
             this.AddButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDeptEmp)).BeginInit();
             this.SuspendLayout();
@@ -119,7 +121,7 @@ namespace DepartmentApp
             this.dataGridViewDeptEmp.AllowUserToAddRows = false;
             this.dataGridViewDeptEmp.AllowUserToDeleteRows = false;
             this.dataGridViewDeptEmp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDeptEmp.Location = new System.Drawing.Point(484, 50);
+            this.dataGridViewDeptEmp.Location = new System.Drawing.Point(486, 82);
             this.dataGridViewDeptEmp.Name = "dataGridViewDeptEmp";
             this.dataGridViewDeptEmp.ReadOnly = true;
             this.dataGridViewDeptEmp.Size = new System.Drawing.Size(558, 413);
@@ -214,10 +216,10 @@ namespace DepartmentApp
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(15, 394);
+            this.AddButton.Location = new System.Drawing.Point(28, 415);
             this.AddButton.Margin = new System.Windows.Forms.Padding(4);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(129, 69);
+            this.AddButton.Size = new System.Drawing.Size(118, 49);
             this.AddButton.TabIndex = 54;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -225,10 +227,10 @@ namespace DepartmentApp
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(167, 394);
+            this.DeleteButton.Location = new System.Drawing.Point(180, 415);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(129, 69);
+            this.DeleteButton.Size = new System.Drawing.Size(118, 49);
             this.DeleteButton.TabIndex = 55;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -236,22 +238,40 @@ namespace DepartmentApp
             // 
             // UpdateButton
             // 
-            this.UpdateButton.Location = new System.Drawing.Point(312, 394);
+            this.UpdateButton.Location = new System.Drawing.Point(325, 415);
             this.UpdateButton.Margin = new System.Windows.Forms.Padding(4);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(129, 69);
+            this.UpdateButton.Size = new System.Drawing.Size(118, 49);
             this.UpdateButton.TabIndex = 56;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
+            // searchBox
+            // 
+            this.searchBox.Location = new System.Drawing.Point(657, 43);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(298, 22);
+            this.searchBox.TabIndex = 58;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(585, 46);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(54, 16);
+            this.label6.TabIndex = 57;
+            this.label6.Text = "Search:";
+            // 
             // DeptEmpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1067, 522);
+            this.Controls.Add(this.searchBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.AddButton);
@@ -272,7 +292,7 @@ namespace DepartmentApp
             this.MaximizeBox = false;
             this.Name = "DeptEmpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DeptEmpForm";
+            this.Text = "Departments Employees Table";
             this.Load += new System.EventHandler(this.DeptEmpForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
@@ -304,5 +324,7 @@ namespace DepartmentApp
         private System.Windows.Forms.ToolStripMenuItem departmentManagerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salariesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem titlesToolStripMenuItem;
+        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Label label6;
     }
 }

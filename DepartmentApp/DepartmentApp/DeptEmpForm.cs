@@ -272,5 +272,11 @@ namespace DepartmentApp
             departments.Closed += (s, args) => this.Close();
             departments.Show();
         }
+
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            (dataGridViewDeptEmp.DataSource as DataTable).DefaultView.RowFilter =
+                $"CONVERT(emp_no, System.String) LIKE '%{searchBox.Text}% OR CONVERT(dept_no, System.String) LIKE '%{searchBox.Text}%' OR CONVERT (from_date, System.String) LIKE '%{searchBox.Text}%' OR CONVERT (to_date, System.String) LIKE '%{searchBox.Text}%'";
+        }
     }
 }

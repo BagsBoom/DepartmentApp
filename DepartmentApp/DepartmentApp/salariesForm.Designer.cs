@@ -72,10 +72,10 @@ namespace DepartmentApp
             // 
             // UpdateButton
             // 
-            this.UpdateButton.Location = new System.Drawing.Point(374, 419);
+            this.UpdateButton.Location = new System.Drawing.Point(364, 384);
             this.UpdateButton.Margin = new System.Windows.Forms.Padding(4);
             this.UpdateButton.Name = "UpdateButton";
-            this.UpdateButton.Size = new System.Drawing.Size(129, 69);
+            this.UpdateButton.Size = new System.Drawing.Size(129, 50);
             this.UpdateButton.TabIndex = 12;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
@@ -83,10 +83,10 @@ namespace DepartmentApp
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(209, 419);
+            this.DeleteButton.Location = new System.Drawing.Point(199, 384);
             this.DeleteButton.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(129, 69);
+            this.DeleteButton.Size = new System.Drawing.Size(129, 50);
             this.DeleteButton.TabIndex = 11;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -94,10 +94,10 @@ namespace DepartmentApp
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(47, 419);
+            this.AddButton.Location = new System.Drawing.Point(37, 384);
             this.AddButton.Margin = new System.Windows.Forms.Padding(4);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(129, 69);
+            this.AddButton.Size = new System.Drawing.Size(129, 50);
             this.AddButton.TabIndex = 10;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@ namespace DepartmentApp
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(209, 297);
+            this.ClearButton.Location = new System.Drawing.Point(209, 315);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(84, 23);
             this.ClearButton.TabIndex = 19;
@@ -116,7 +116,7 @@ namespace DepartmentApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(107, 179);
+            this.label1.Location = new System.Drawing.Point(107, 197);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 16);
             this.label1.TabIndex = 26;
@@ -184,7 +184,7 @@ namespace DepartmentApp
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(199, 179);
+            this.numericUpDown1.Location = new System.Drawing.Point(199, 197);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -197,7 +197,7 @@ namespace DepartmentApp
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(107, 218);
+            this.label2.Location = new System.Drawing.Point(107, 236);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 16);
             this.label2.TabIndex = 29;
@@ -206,7 +206,7 @@ namespace DepartmentApp
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(107, 253);
+            this.label3.Location = new System.Drawing.Point(107, 271);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 16);
             this.label3.TabIndex = 30;
@@ -215,7 +215,7 @@ namespace DepartmentApp
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(199, 253);
+            this.dateTimePicker2.Location = new System.Drawing.Point(199, 271);
             this.dateTimePicker2.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker2.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker2.Name = "dateTimePicker2";
@@ -226,7 +226,7 @@ namespace DepartmentApp
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(199, 218);
+            this.dateTimePicker1.Location = new System.Drawing.Point(199, 236);
             this.dateTimePicker1.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
             this.dateTimePicker1.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -237,7 +237,7 @@ namespace DepartmentApp
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(199, 133);
+            this.comboBox1.Location = new System.Drawing.Point(199, 151);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 24);
             this.comboBox1.TabIndex = 33;
@@ -246,7 +246,7 @@ namespace DepartmentApp
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(108, 136);
+            this.label4.Location = new System.Drawing.Point(108, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 16);
             this.label4.TabIndex = 34;
@@ -281,8 +281,9 @@ namespace DepartmentApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(1203, 590);
+            this.ClientSize = new System.Drawing.Size(1203, 530);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -305,7 +306,7 @@ namespace DepartmentApp
             this.MaximizeBox = false;
             this.Name = "salariesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "salariesForm";
+            this.Text = "Salaries Table";
             this.Load += new System.EventHandler(this.salariesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalaries)).EndInit();
             this.toolStrip1.ResumeLayout(false);

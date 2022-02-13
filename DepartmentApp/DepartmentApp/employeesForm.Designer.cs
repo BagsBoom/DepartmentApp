@@ -133,7 +133,7 @@ namespace DepartmentApp
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(38, 474);
+            this.AddButton.Location = new System.Drawing.Point(38, 425);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(97, 56);
             this.AddButton.TabIndex = 4;
@@ -143,7 +143,7 @@ namespace DepartmentApp
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(159, 474);
+            this.button2.Location = new System.Drawing.Point(159, 425);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(97, 56);
             this.button2.TabIndex = 5;
@@ -153,7 +153,7 @@ namespace DepartmentApp
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(277, 474);
+            this.button3.Location = new System.Drawing.Point(277, 425);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(97, 56);
             this.button3.TabIndex = 6;
@@ -231,6 +231,7 @@ namespace DepartmentApp
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(116, 22);
             this.textBox3.TabIndex = 14;
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // dateTimePicker1
             // 
@@ -283,9 +284,8 @@ namespace DepartmentApp
             // 
             // employeesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(1251, 583);
             this.Controls.Add(this.searchBox);
@@ -311,8 +311,9 @@ namespace DepartmentApp
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "employeesForm";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "employeesForm";
+            this.Text = "Employees Table";
             this.Load += new System.EventHandler(this.employeesForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

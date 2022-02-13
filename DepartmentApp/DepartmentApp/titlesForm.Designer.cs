@@ -280,17 +280,17 @@ namespace DepartmentApp
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(652, 57);
+            this.label6.Location = new System.Drawing.Point(672, 57);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 16);
+            this.label6.Size = new System.Drawing.Size(54, 16);
             this.label6.TabIndex = 45;
-            this.label6.Text = "Search by title:";
+            this.label6.Text = "Search:";
             // 
             // titlesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(1203, 590);
             this.Controls.Add(this.searchBox);
@@ -317,7 +317,7 @@ namespace DepartmentApp
             this.MaximizeBox = false;
             this.Name = "titlesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "titlesForm";
+            this.Text = "Titles Table";
             this.Load += new System.EventHandler(this.titlesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTitles)).EndInit();
             this.toolStrip1.ResumeLayout(false);

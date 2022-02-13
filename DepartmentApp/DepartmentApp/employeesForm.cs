@@ -16,11 +16,11 @@ namespace DepartmentApp
         private MySqlCommandBuilder mySqlCommandBuilder = null;
         private MySqlDataAdapter mySqlDataAdapter = null;
         private DataSet dataSet = null;
-        private MySqlCommand cmd;
 
         public employeesForm()
         {
             InitializeComponent();
+            
         }
 
         private void LoadData()
@@ -165,7 +165,7 @@ namespace DepartmentApp
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
             (dataGridViewEmployees.DataSource as DataTable).DefaultView.RowFilter =
-                $"last_name LIKE '%{searchBox.Text}%' OR first_name LIKE '%{searchBox.Text}%' OR gender LIKE '%{searchBox.Text}%' OR CONVERT(emp_no, System.String) LIKE '%{searchBox.Text}%'";  
+                $"last_name LIKE '%{searchBox.Text}%' OR first_name LIKE '%{searchBox.Text}%' OR gender LIKE '%{searchBox.Text}%' OR CONVERT(emp_no, System.String) LIKE '%{searchBox.Text}%' OR CONVERT (birth_day, System.String) LIKE '%{searchBox.Text}%' OR CONVERT (hire_date, System.String) LIKE '%{searchBox.Text}%'";  
         }
 
         private void departmentsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -214,6 +214,11 @@ namespace DepartmentApp
         }
 
         private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }

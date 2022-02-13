@@ -45,7 +45,7 @@ namespace DepartmentApp
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(153, 20);
+            this.label1.Location = new System.Drawing.Point(113, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(139, 25);
             this.label1.TabIndex = 0;
@@ -57,10 +57,10 @@ namespace DepartmentApp
             this.textBoxPassword.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPassword.ForeColor = System.Drawing.Color.Black;
-            this.textBoxPassword.Location = new System.Drawing.Point(228, 124);
+            this.textBoxPassword.Location = new System.Drawing.Point(217, 124);
             this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(102, 21);
+            this.textBoxPassword.Size = new System.Drawing.Size(115, 21);
             this.textBoxPassword.TabIndex = 8;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
@@ -69,17 +69,17 @@ namespace DepartmentApp
             this.textBoxLogin.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.textBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxLogin.ForeColor = System.Drawing.Color.Black;
-            this.textBoxLogin.Location = new System.Drawing.Point(228, 76);
+            this.textBoxLogin.Location = new System.Drawing.Point(217, 76);
             this.textBoxLogin.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(102, 21);
+            this.textBoxLogin.Size = new System.Drawing.Size(115, 21);
             this.textBoxLogin.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(36, 121);
+            this.label3.Location = new System.Drawing.Point(25, 121);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(188, 24);
@@ -90,7 +90,7 @@ namespace DepartmentApp
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(76, 74);
+            this.label2.Location = new System.Drawing.Point(65, 74);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(148, 24);
@@ -101,7 +101,7 @@ namespace DepartmentApp
             // 
             this.buttonSignUp.BackColor = System.Drawing.Color.MintCream;
             this.buttonSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonSignUp.Location = new System.Drawing.Point(158, 212);
+            this.buttonSignUp.Location = new System.Drawing.Point(109, 213);
             this.buttonSignUp.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSignUp.Name = "buttonSignUp";
             this.buttonSignUp.Size = new System.Drawing.Size(127, 44);
@@ -115,7 +115,7 @@ namespace DepartmentApp
             this.ReturnToLoginLabel.AutoSize = true;
             this.ReturnToLoginLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ReturnToLoginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ReturnToLoginLabel.Location = new System.Drawing.Point(164, 275);
+            this.ReturnToLoginLabel.Location = new System.Drawing.Point(115, 272);
             this.ReturnToLoginLabel.Name = "ReturnToLoginLabel";
             this.ReturnToLoginLabel.Size = new System.Drawing.Size(112, 16);
             this.ReturnToLoginLabel.TabIndex = 11;
@@ -127,10 +127,10 @@ namespace DepartmentApp
             this.textBoxPasswordConfirm.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.textBoxPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxPasswordConfirm.ForeColor = System.Drawing.Color.Black;
-            this.textBoxPasswordConfirm.Location = new System.Drawing.Point(228, 167);
+            this.textBoxPasswordConfirm.Location = new System.Drawing.Point(217, 167);
             this.textBoxPasswordConfirm.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPasswordConfirm.Name = "textBoxPasswordConfirm";
-            this.textBoxPasswordConfirm.Size = new System.Drawing.Size(102, 21);
+            this.textBoxPasswordConfirm.Size = new System.Drawing.Size(115, 21);
             this.textBoxPasswordConfirm.TabIndex = 9;
             this.textBoxPasswordConfirm.UseSystemPasswordChar = true;
             // 
@@ -138,7 +138,7 @@ namespace DepartmentApp
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(16, 164);
+            this.label4.Location = new System.Drawing.Point(5, 164);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(208, 24);
@@ -149,9 +149,9 @@ namespace DepartmentApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(442, 310);
+            this.ClientSize = new System.Drawing.Size(345, 306);
             this.Controls.Add(this.textBoxPasswordConfirm);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.ReturnToLoginLabel);
@@ -166,7 +166,7 @@ namespace DepartmentApp
             this.MaximizeBox = false;
             this.Name = "SignUpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SignUpForm";
+            this.Text = "Sign Up";
             this.ResumeLayout(false);
             this.PerformLayout();
 

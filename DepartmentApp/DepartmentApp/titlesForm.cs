@@ -188,7 +188,7 @@ namespace DepartmentApp
 
         private void searchBox_TextChanged(object sender, EventArgs e)
         {
-            (dataGridViewTitles.DataSource as DataTable).DefaultView.RowFilter = $"title LIKE '%{searchBox.Text}%' OR CONVERT(emp_no, System.String) LIKE '%{searchBox.Text}%'";
+            (dataGridViewTitles.DataSource as DataTable).DefaultView.RowFilter = $"CONVERT(emp_no, System.String) LIKE '%{searchBox.Text}%' OR title LIKE '%{searchBox.Text}%' OR CONVERT(emp_no, System.String) LIKE '%{searchBox.Text}%'OR CONVERT (from_date, System.String) LIKE '%{searchBox.Text}%' OR CONVERT (to_date, System.String) LIKE '%{searchBox.Text}%' OR other LIKE '%{searchBox.Text}%'";
         }
 
         private void comboBox1_KeyPress(object sender, KeyPressEventArgs e)

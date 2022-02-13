@@ -184,5 +184,6 @@ namespace DepartmentApp
             departments.Closed += (s, args) => this.Close();
             departments.Show();
         }
+
     }
 }
