@@ -136,7 +136,7 @@ namespace DepartmentApp
         {
             DataRow row = dataSet.Tables["dept_manager"].NewRow();
 
-            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value <= dateTimePicker2.Value)
+            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
                 MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
@@ -185,7 +185,7 @@ namespace DepartmentApp
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             int x = dataGridViewDeptManager.CurrentCell.RowIndex;
-            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value <= dateTimePicker2.Value)
+            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
                 MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }

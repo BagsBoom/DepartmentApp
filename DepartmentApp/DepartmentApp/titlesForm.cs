@@ -107,22 +107,34 @@ namespace DepartmentApp
         {
             DataRow row = dataSet.Tables["titles"].NewRow();
 
-            if (textBox1.Text == "" || textBox2.Text == "" || comboBox1.Text == "")
+            if (textBox1.Text == "" || textBox2.Text == "" || comboBox1.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
-                MessageBox.Show("Error! Fill all the text boxes please!");
+                MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
             else
             {
-                row["emp_no"] = comboBox1.Text;
-                row["title"] = textBox1.Text;
-                row["other"] = textBox2.Text;
-                row["from_date"] = dateTimePicker1.Text;
-                row["to_date"] = dateTimePicker2.Text;
+                try
+                {
+                    row["emp_no"] = comboBox1.Text;
+                    row["title"] = textBox1.Text;
+                    row["other"] = textBox2.Text;
+                    row["from_date"] = dateTimePicker1.Text;
+                    row["to_date"] = dateTimePicker2.Text;
 
-                dataSet.Tables["titles"].Rows.Add(row);
+                    dataSet.Tables["titles"].Rows.Add(row);
 
-                mySqlDataAdapter.Update(dataSet, "titles");
-                ReloadData();
+                    mySqlDataAdapter.Update(dataSet, "titles");
+
+                }
+                catch (MySqlException ex)
+                {
+                    if (ex.Number > 0)
+                    {
+                        ReloadData();
+                        MessageBox.Show("Please, check the ID which you want to add!");
+                        return;
+                    }
+                }
                 int nRowIndex = dataGridViewTitles.Rows.Count - 1;
 
                 dataGridViewTitles.FirstDisplayedScrollingRowIndex = nRowIndex;
@@ -146,9 +158,9 @@ namespace DepartmentApp
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             int x = dataGridViewTitles.CurrentCell.RowIndex;
-            if (textBox1.Text == "" || textBox2.Text == "" || comboBox1.Text == "")
+            if (textBox1.Text == "" || textBox2.Text == "" || comboBox1.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
-                MessageBox.Show("Error! Fill all the text boxes please!");
+                MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
             else
             {

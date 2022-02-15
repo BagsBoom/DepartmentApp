@@ -137,7 +137,7 @@ namespace DepartmentApp
         {
             DataRow row = dataSet.Tables["dept_emp"].NewRow();
 
-            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value <= dateTimePicker2.Value)
+            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
                 MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
@@ -186,7 +186,7 @@ namespace DepartmentApp
         {
             int x = dataGridViewDeptEmp.CurrentCell.RowIndex;
 
-            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value <= dateTimePicker2.Value)
+            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
                 MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
