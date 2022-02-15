@@ -186,6 +186,7 @@ namespace DepartmentApp
             this.dataGridViewDeptManager.Size = new System.Drawing.Size(560, 404);
             this.dataGridViewDeptManager.TabIndex = 69;
             this.dataGridViewDeptManager.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDeptManager_CellClick);
+            this.dataGridViewDeptManager.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewDeptManager_KeyUp);
             // 
             // toolStrip1
             // 

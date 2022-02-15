@@ -69,6 +69,7 @@ namespace DepartmentApp
             this.dataGridViewSalaries.Size = new System.Drawing.Size(621, 406);
             this.dataGridViewSalaries.TabIndex = 0;
             this.dataGridViewSalaries.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalaries_CellClick);
+            this.dataGridViewSalaries.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewSalaries_KeyUp);
             // 
             // UpdateButton
             // 

@@ -80,28 +80,52 @@ namespace DepartmentApp
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-
             DataRow row = dataSet.Tables["employees"].NewRow();
 
-            if(textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "")
+
+            int flag = 0;
+            void TestDuplicate()
             {
-                MessageBox.Show("Error! Fill all the text boxes please!");
+                for (int i = 0; i < dataGridViewEmployees.Rows.Count; i++)
+                {
+                    if (dataGridViewEmployees.Rows[i].Cells["birth_day"].Value.ToString().Substring(0, 10) == dateTimePicker1.Text)
+                    {
+                       MessageBox.Show("Error! The same data!");
+                       flag = 1;
+                       break;
+                    }
+                }
+            }
+
+
+
+            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
+            {
+                MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
+            }
+            else if((DateTime.Now.Subtract(dateTimePicker1.Value).Days) / (365) < 18)
+            {
+                MessageBox.Show("Error! You are going to add human < 18 years old!");
             }
             else 
             {
-                row["first_name"] = textBox1.Text;
-                row["last_name"] = textBox2.Text;
-                row["birth_day"] = dateTimePicker1.Text;
-                row["gender"] = textBox3.Text;
-                row["hire_date"] = dateTimePicker2.Text;
-            
-                dataSet.Tables["employees"].Rows.Add(row);
-            
-                mySqlDataAdapter.Update(dataSet, "employees");
-                ReloadData();
-                int nRowIndex = dataGridViewEmployees.Rows.Count - 1;
+                TestDuplicate();
+                if (flag == 0)
+                {
+                    row["first_name"] = textBox1.Text;
+                    row["last_name"] = textBox2.Text;
+                    row["birth_day"] = dateTimePicker1.Text;
+                    row["gender"] = textBox3.Text;
+                    row["hire_date"] = dateTimePicker2.Text;
 
-                dataGridViewEmployees.FirstDisplayedScrollingRowIndex = nRowIndex;
+                    dataSet.Tables["employees"].Rows.Add(row);
+
+                    mySqlDataAdapter.Update(dataSet, "employees");
+                    ReloadData();
+                    int nRowIndex = dataGridViewEmployees.Rows.Count - 1;
+
+                    dataGridViewEmployees.FirstDisplayedScrollingRowIndex = nRowIndex;
+                }
             }
         }
 
@@ -146,9 +170,9 @@ namespace DepartmentApp
         private void button3_Click(object sender, EventArgs e)
         {
             int x = dataGridViewEmployees.CurrentCell.RowIndex;
-            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "")
+            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
-                MessageBox.Show("Error! Fill all the text boxes please!");
+                MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
             else
             {
@@ -221,6 +245,20 @@ namespace DepartmentApp
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void dataGridViewEmployees_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                textBox1.Text = dataGridViewEmployees.CurrentRow.Cells["first_name"].Value.ToString();
+                textBox2.Text = dataGridViewEmployees.CurrentRow.Cells["last_name"].Value.ToString();
+                if (dataGridViewEmployees.CurrentRow.Cells["birth_day"].Value.ToString().Substring(0, 10) != "")
+                    dateTimePicker1.Text = dataGridViewEmployees.CurrentRow.Cells["birth_day"].Value.ToString().Substring(0, 10);
+                textBox3.Text = dataGridViewEmployees.CurrentRow.Cells["gender"].Value.ToString();
+                if (dataGridViewEmployees.CurrentRow.Cells["hire_date"].Value.ToString().Substring(0, 10) != "")
+                    dateTimePicker2.Text = dataGridViewEmployees.CurrentRow.Cells["hire_date"].Value.ToString().Substring(0, 10);
+            }
         }
     }
 }

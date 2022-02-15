@@ -69,6 +69,7 @@ namespace DepartmentApp
             this.dataGridViewTitles.Size = new System.Drawing.Size(697, 449);
             this.dataGridViewTitles.TabIndex = 0;
             this.dataGridViewTitles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTitles_CellClick);
+            this.dataGridViewTitles.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewTitles_KeyUp);
             // 
             // toolStrip1
             // 

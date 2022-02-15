@@ -185,5 +185,12 @@ namespace DepartmentApp
             departments.Show();
         }
 
+        private void dataGridViewDepartments_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Tab)
+            {
+                textBox1.Text = dataGridViewDepartments.CurrentRow.Cells["dept_name"].Value.ToString();
+            }
+        }
     }
 }

@@ -235,5 +235,19 @@ namespace DepartmentApp
             departments.Closed += (s, args) => this.Close();
             departments.Show();
         }
+
+        private void dataGridViewTitles_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                comboBox1.Text = dataGridViewTitles.CurrentRow.Cells["emp_no"].Value.ToString();
+                textBox1.Text = dataGridViewTitles.CurrentRow.Cells["title"].Value.ToString();
+                textBox2.Text = dataGridViewTitles.CurrentRow.Cells["other"].Value.ToString();
+                if (dataGridViewTitles.CurrentRow.Cells["from_date"].Value.ToString().Substring(0, 10) != "")
+                    dateTimePicker1.Text = dataGridViewTitles.CurrentRow.Cells["from_date"].Value.ToString().Substring(0, 10);
+                if (dataGridViewTitles.CurrentRow.Cells["to_date"].Value.ToString().Substring(0, 10) != "")
+                    dateTimePicker2.Text = dataGridViewTitles.CurrentRow.Cells["to_date"].Value.ToString().Substring(0, 10);
+            }
+        }
     }
 }

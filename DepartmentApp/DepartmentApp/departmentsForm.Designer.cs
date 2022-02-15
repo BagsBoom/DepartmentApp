@@ -62,6 +62,7 @@ namespace DepartmentApp
             this.dataGridViewDepartments.Size = new System.Drawing.Size(669, 354);
             this.dataGridViewDepartments.TabIndex = 0;
             this.dataGridViewDepartments.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDepartments_CellClick);
+            this.dataGridViewDepartments.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewDepartments_KeyUp);
             // 
             // toolStrip1
             // 

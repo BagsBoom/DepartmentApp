@@ -137,9 +137,9 @@ namespace DepartmentApp
         {
             DataRow row = dataSet.Tables["dept_emp"].NewRow();
 
-            if (comboBox1.Text == "" || comboBox2.Text == "")
+            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value <= dateTimePicker2.Value)
             {
-                MessageBox.Show("Error! Fill all the text boxes please!");
+                MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
             else
             {
@@ -186,9 +186,9 @@ namespace DepartmentApp
         {
             int x = dataGridViewDeptEmp.CurrentCell.RowIndex;
 
-            if (comboBox1.Text == "" || comboBox2.Text == "")
+            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value <= dateTimePicker2.Value)
             {
-                MessageBox.Show("Error! Fill all the text boxes please!");
+                MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
             else
             {
@@ -277,6 +277,19 @@ namespace DepartmentApp
         {
             (dataGridViewDeptEmp.DataSource as DataTable).DefaultView.RowFilter =
                 $"CONVERT(emp_no, System.String) LIKE '%{searchBox.Text}% OR CONVERT(dept_no, System.String) LIKE '%{searchBox.Text}%' OR CONVERT (from_date, System.String) LIKE '%{searchBox.Text}%' OR CONVERT (to_date, System.String) LIKE '%{searchBox.Text}%'";
+        }
+
+        private void dataGridViewDeptEmp_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                comboBox1.Text = dataGridViewDeptEmp.CurrentRow.Cells["emp_no"].Value.ToString();
+                comboBox2.Text = dataGridViewDeptEmp.CurrentRow.Cells["dept_no"].Value.ToString();
+                if (dataGridViewDeptEmp.CurrentRow.Cells["from_date"].Value.ToString().Substring(0, 10) != "")
+                    dateTimePicker1.Text = dataGridViewDeptEmp.CurrentRow.Cells["from_date"].Value.ToString().Substring(0, 10);
+                if (dataGridViewDeptEmp.CurrentRow.Cells["to_date"].Value.ToString().Substring(0, 10) != "")
+                    dateTimePicker1.Text = dataGridViewDeptEmp.CurrentRow.Cells["to_date"].Value.ToString().Substring(0, 10);
+            }
         }
     }
 }

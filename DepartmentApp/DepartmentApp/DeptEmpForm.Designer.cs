@@ -127,6 +127,7 @@ namespace DepartmentApp
             this.dataGridViewDeptEmp.Size = new System.Drawing.Size(558, 413);
             this.dataGridViewDeptEmp.TabIndex = 5;
             this.dataGridViewDeptEmp.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDeptEmp_CellClick);
+            this.dataGridViewDeptEmp.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewDeptEmp_KeyUp);
             // 
             // dateTimePicker2
             // 

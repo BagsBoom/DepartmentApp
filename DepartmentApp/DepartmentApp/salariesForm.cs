@@ -281,5 +281,17 @@ namespace DepartmentApp
             departments.Show();
         }
 
+        private void dataGridViewSalaries_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Tab)
+            {
+                comboBox1.Text = dataGridViewSalaries.CurrentRow.Cells["emp_no"].Value.ToString();
+                numericUpDown1.Text = dataGridViewSalaries.CurrentRow.Cells["salary"].Value.ToString();
+                if (dataGridViewSalaries.CurrentRow.Cells["from_date"].Value.ToString().Substring(0, 10) != "")
+                    dateTimePicker1.Text = dataGridViewSalaries.CurrentRow.Cells["from_date"].Value.ToString().Substring(0, 10);
+                if (dataGridViewSalaries.CurrentRow.Cells["to_date"].Value.ToString().Substring(0, 10) != "")
+                    dateTimePicker2.Text = dataGridViewSalaries.CurrentRow.Cells["to_date"].Value.ToString().Substring(0, 10);
+            }
+        }
     }
 }

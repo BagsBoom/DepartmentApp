@@ -130,6 +130,7 @@ namespace DepartmentApp
             this.dataGridViewEmployees.Size = new System.Drawing.Size(785, 451);
             this.dataGridViewEmployees.TabIndex = 3;
             this.dataGridViewEmployees.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmployees_CellClick);
+            this.dataGridViewEmployees.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewEmployees_KeyUp);
             // 
             // AddButton
             // 
@@ -242,7 +243,7 @@ namespace DepartmentApp
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(116, 22);
             this.dateTimePicker1.TabIndex = 15;
-            this.dateTimePicker1.Value = new System.DateTime(2002, 2, 11, 0, 0, 0, 0);
+            this.dateTimePicker1.Value = new System.DateTime(2022, 2, 15, 0, 0, 0, 0);
             // 
             // dateTimePicker2
             // 
@@ -253,7 +254,7 @@ namespace DepartmentApp
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(116, 22);
             this.dateTimePicker2.TabIndex = 16;
-            this.dateTimePicker2.Value = new System.DateTime(2022, 1, 13, 0, 0, 0, 0);
+            this.dateTimePicker2.Value = new System.DateTime(2022, 2, 15, 0, 0, 0, 0);
             // 
             // ClearButton
             // 

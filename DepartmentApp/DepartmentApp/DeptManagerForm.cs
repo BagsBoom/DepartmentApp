@@ -136,9 +136,9 @@ namespace DepartmentApp
         {
             DataRow row = dataSet.Tables["dept_manager"].NewRow();
 
-            if (comboBox1.Text == "" || comboBox2.Text == "")
+            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value <= dateTimePicker2.Value)
             {
-                MessageBox.Show("Error! Fill all the text boxes please!");
+                MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
             else
             {
@@ -185,9 +185,9 @@ namespace DepartmentApp
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             int x = dataGridViewDeptManager.CurrentCell.RowIndex;
-            if (comboBox1.Text == "" || comboBox2.Text == "")
+            if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value <= dateTimePicker2.Value)
             {
-                MessageBox.Show("Error! Fill all the text boxes please!");
+                MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
             else
             {
@@ -223,6 +223,7 @@ namespace DepartmentApp
         private void dataGridViewDeptManager_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int x = e.RowIndex;
+            
             if (e.RowIndex != -1)
             {
                 comboBox1.Text = dataGridViewDeptManager.Rows[x].Cells["emp_no"].Value.ToString();
@@ -288,6 +289,19 @@ namespace DepartmentApp
         {
             (dataGridViewDeptManager.DataSource as DataTable).DefaultView.RowFilter =
                 $"CONVERT(emp_no, System.String) LIKE '%{searchBox.Text}% OR CONVERT(dept_no, System.String) LIKE '%{searchBox.Text}%' OR CONVERT (from_date, System.String) LIKE '%{searchBox.Text}%' OR CONVERT (to_date, System.String) LIKE '%{searchBox.Text}%'";
+        }
+
+        private void dataGridViewDeptManager_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                comboBox1.Text = dataGridViewDeptManager.CurrentRow.Cells["emp_no"].Value.ToString();
+                comboBox2.Text = dataGridViewDeptManager.CurrentRow.Cells["dept_no"].Value.ToString();
+                if (dataGridViewDeptManager.CurrentRow.Cells["from_date"].Value.ToString().Substring(0,10) != "")
+                    dateTimePicker1.Text = dataGridViewDeptManager.CurrentRow.Cells["from_date"].Value.ToString().Substring(0, 10);
+                if (dataGridViewDeptManager.CurrentRow.Cells["to_date"].Value.ToString().Substring(0, 10) != "")
+                    dateTimePicker1.Text = dataGridViewDeptManager.CurrentRow.Cells["to_date"].Value.ToString().Substring(0, 10);
+            }
         }
     }
 }
