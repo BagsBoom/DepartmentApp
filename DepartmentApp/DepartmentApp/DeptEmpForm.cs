@@ -17,6 +17,7 @@ namespace DepartmentApp
         private MySqlCommandBuilder mySqlCommandBuilder = null;
         private MySqlDataAdapter mySqlDataAdapter = null;
         private DataSet dataSet = null;
+        int flag = 0;
         public DeptEmpForm()
         {
             InitializeComponent();
@@ -133,38 +134,58 @@ namespace DepartmentApp
             LoadCombo_2();
         }
 
+        private void TestDuplicate()
+        {
+            for (int i = 0; i < dataGridViewDeptEmp.Rows.Count; i++)
+            {
+                if (dataGridViewDeptEmp.Rows[i].Cells["emp_no"].Value.ToString() == comboBox1.Text
+                    && dataGridViewDeptEmp.Rows[i].Cells["dept_no"].Value.ToString() == comboBox2.Text
+                    && dataGridViewDeptEmp.Rows[i].Cells["from_date"].Value.ToString().Substring(0, 10) == dateTimePicker1.Text
+                    && dataGridViewDeptEmp.Rows[i].Cells["to_date"].Value.ToString().Substring(0, 10) == dateTimePicker2.Text)
+                {
+                    MessageBox.Show("Error! The same data!");
+                    flag = 1;
+                    break;
+                }
+            }
+        }
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             DataRow row = dataSet.Tables["dept_emp"].NewRow();
-
+            flag = 0;
             if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
                 MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
             else
             {
-                try
+                TestDuplicate();
+                if (flag == 0)
                 {
-                    row["emp_no"] = comboBox1.Text;
-                    row["dept_no"] = comboBox2.Text;
-                    row["from_date"] = dateTimePicker1.Text;
-                    row["to_date"] = dateTimePicker2.Text;
-                    dataSet.Tables["dept_emp"].Rows.Add(row);
-
-                    mySqlDataAdapter.Update(dataSet, "dept_emp");
-                }
-                catch (MySqlException ex)
-                {
-                    if (ex.Number > 0)
+                    try
                     {
-                        ReloadData();
-                        MessageBox.Show("Please, check the ID which you want to add!");
-                        return;
-                    }
-                }
-                int nRowIndex = dataGridViewDeptEmp.Rows.Count - 1;
+                        row["emp_no"] = comboBox1.Text;
+                        row["dept_no"] = comboBox2.Text;
+                        row["from_date"] = dateTimePicker1.Text;
+                        row["to_date"] = dateTimePicker2.Text;
+                        dataSet.Tables["dept_emp"].Rows.Add(row);
 
-                dataGridViewDeptEmp.FirstDisplayedScrollingRowIndex = nRowIndex;
+                        mySqlDataAdapter.Update(dataSet, "dept_emp");
+                    }
+                    catch (MySqlException ex)
+                    {
+                        if (ex.Number > 0)
+                        {
+                            ReloadData();
+                            MessageBox.Show("Please, check the ID which you want to add!");
+                            return;
+                        }
+                    }
+                    int nRowIndex = dataGridViewDeptEmp.Rows.Count - 1;
+
+                    dataGridViewDeptEmp.FirstDisplayedScrollingRowIndex = nRowIndex;
+                }
             }
         }
 
@@ -185,19 +206,23 @@ namespace DepartmentApp
         private void UpdateButton_Click(object sender, EventArgs e)
         {
             int x = dataGridViewDeptEmp.CurrentCell.RowIndex;
-
+            flag = 0;
             if (comboBox1.Text == "" || comboBox2.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
                 MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
             else
             {
-                dataGridViewDeptEmp.Rows[x].Cells["emp_no"].Value = comboBox1.Text;
-                dataGridViewDeptEmp.Rows[x].Cells["dept_no"].Value = comboBox2.Text;
-                dataGridViewDeptEmp.Rows[x].Cells["from_date"].Value = dateTimePicker1.Text;
-                dataGridViewDeptEmp.Rows[x].Cells["to_date"].Value = dateTimePicker2.Text;
+                TestDuplicate();
+                if (flag == 0)
+                {
+                    dataGridViewDeptEmp.Rows[x].Cells["emp_no"].Value = comboBox1.Text;
+                    dataGridViewDeptEmp.Rows[x].Cells["dept_no"].Value = comboBox2.Text;
+                    dataGridViewDeptEmp.Rows[x].Cells["from_date"].Value = dateTimePicker1.Text;
+                    dataGridViewDeptEmp.Rows[x].Cells["to_date"].Value = dateTimePicker2.Text;
 
-                mySqlDataAdapter.Update(dataSet, "dept_emp");
+                    mySqlDataAdapter.Update(dataSet, "dept_emp");
+                }
             }
         }
 

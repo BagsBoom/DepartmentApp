@@ -16,6 +16,7 @@ namespace DepartmentApp
         private MySqlCommandBuilder mySqlCommandBuilder = null;
         private MySqlDataAdapter mySqlDataAdapter = null;
         private DataSet dataSet = null;
+        int flag = 0;
 
         public employeesForm()
         {
@@ -77,27 +78,27 @@ namespace DepartmentApp
             LoadData();
         }
 
-
+        private void TestDuplicate()
+        {
+            for (int i = 0; i < dataGridViewEmployees.Rows.Count; i++)
+            {
+                if (dataGridViewEmployees.Rows[i].Cells["birth_day"].Value.ToString().Substring(0, 10) == dateTimePicker1.Text
+                    && dataGridViewEmployees.Rows[i].Cells["first_name"].Value.ToString() == textBox1.Text
+                    && dataGridViewEmployees.Rows[i].Cells["last_name"].Value.ToString() == textBox2.Text
+                    && dataGridViewEmployees.Rows[i].Cells["gender"].Value.ToString() == textBox3.Text
+                    && dataGridViewEmployees.Rows[i].Cells["hire_date"].Value.ToString().Substring(0, 10) == dateTimePicker2.Text)
+                {
+                    MessageBox.Show("Error! The same data!");
+                    flag = 1;
+                    break;
+                }
+            }
+        }
         private void AddButton_Click(object sender, EventArgs e)
         {
             DataRow row = dataSet.Tables["employees"].NewRow();
 
-
-            int flag = 0;
-            void TestDuplicate()
-            {
-                for (int i = 0; i < dataGridViewEmployees.Rows.Count; i++)
-                {
-                    if (dataGridViewEmployees.Rows[i].Cells["birth_day"].Value.ToString().Substring(0, 10) == dateTimePicker1.Text)
-                    {
-                       MessageBox.Show("Error! The same data!");
-                       flag = 1;
-                       break;
-                    }
-                }
-            }
-
-
+            flag = 0;
 
             if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
@@ -170,19 +171,28 @@ namespace DepartmentApp
         private void button3_Click(object sender, EventArgs e)
         {
             int x = dataGridViewEmployees.CurrentCell.RowIndex;
+            flag = 0;
             if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || dateTimePicker1.Value >= dateTimePicker2.Value)
             {
                 MessageBox.Show("Error! Fill all the text boxes please or check if the entered data is correct!");
             }
+            else if ((DateTime.Now.Subtract(dateTimePicker1.Value).Days) / (365) < 18)
+            {
+                MessageBox.Show("Error! You are going to add human < 18 years old!");
+            }
             else
             {
-                dataGridViewEmployees.Rows[x].Cells["first_name"].Value = textBox1.Text;
-                dataGridViewEmployees.Rows[x].Cells["last_name"].Value = textBox2.Text;
-                dataGridViewEmployees.Rows[x].Cells["birth_day"].Value = dateTimePicker1.Text;
-                dataGridViewEmployees.Rows[x].Cells["gender"].Value = textBox3.Text;
-                dataGridViewEmployees.Rows[x].Cells["hire_date"].Value = dateTimePicker2.Text;
+                TestDuplicate();
+                if (flag == 0)
+                {
+                    dataGridViewEmployees.Rows[x].Cells["first_name"].Value = textBox1.Text;
+                    dataGridViewEmployees.Rows[x].Cells["last_name"].Value = textBox2.Text;
+                    dataGridViewEmployees.Rows[x].Cells["birth_day"].Value = dateTimePicker1.Text;
+                    dataGridViewEmployees.Rows[x].Cells["gender"].Value = textBox3.Text;
+                    dataGridViewEmployees.Rows[x].Cells["hire_date"].Value = dateTimePicker2.Text;
 
-                mySqlDataAdapter.Update(dataSet, "employees");
+                    mySqlDataAdapter.Update(dataSet, "employees");
+                }
             }
         }
 

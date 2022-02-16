@@ -17,6 +17,7 @@ namespace DepartmentApp
         private MySqlCommandBuilder mySqlCommandBuilder = null;
         private MySqlDataAdapter mySqlDataAdapter = null;
         private DataSet dataSet = null;
+        int flag = 0;
         public departmentsForm()
         {
             InitializeComponent();
@@ -74,24 +75,42 @@ namespace DepartmentApp
             LoadData();
         }
 
+        private void TestDuplicate()
+        {
+            for (int i = 0; i < dataGridViewDepartments.Rows.Count; i++)
+            {
+                if (dataGridViewDepartments.Rows[i].Cells["dept_name"].Value.ToString() == textBox1.Text)
+                {
+                    MessageBox.Show("Error! The same data!");
+                    flag = 1;
+                    break;
+                }
+            }
+        }
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             DataRow row = dataSet.Tables["departments"].NewRow();
+            flag = 0;
             if (textBox1.Text == "")
             {
                 MessageBox.Show("Error! Fill all the text boxes please!");
             }
             else
             {
-                row["dept_name"] = textBox1.Text;
+                TestDuplicate();
+                if (flag == 0)
+                {
+                    row["dept_name"] = textBox1.Text;
 
-                dataSet.Tables["departments"].Rows.Add(row);
+                    dataSet.Tables["departments"].Rows.Add(row);
 
-                mySqlDataAdapter.Update(dataSet, "departments");
-                ReloadData();
-                int nRowIndex = dataGridViewDepartments.Rows.Count - 1;
+                    mySqlDataAdapter.Update(dataSet, "departments");
+                    ReloadData();
+                    int nRowIndex = dataGridViewDepartments.Rows.Count - 1;
 
-                dataGridViewDepartments.FirstDisplayedScrollingRowIndex = nRowIndex;
+                    dataGridViewDepartments.FirstDisplayedScrollingRowIndex = nRowIndex;
+                }
             }
         }
 
@@ -112,15 +131,20 @@ namespace DepartmentApp
         private void button3_Click(object sender, EventArgs e)
         {
             int x = dataGridViewDepartments.CurrentCell.RowIndex;
+            flag = 0;
             if (textBox1.Text == "")
             {
                 MessageBox.Show("Error! Fill all the text boxes please!");
             }
             else 
             {
-                dataGridViewDepartments.Rows[x].Cells["dept_name"].Value = textBox1.Text;
+                TestDuplicate();
+                if (flag == 0)
+                {
+                    dataGridViewDepartments.Rows[x].Cells["dept_name"].Value = textBox1.Text;
 
-                mySqlDataAdapter.Update(dataSet, "departments");
+                    mySqlDataAdapter.Update(dataSet, "departments");
+                }
             }
         }
 
